@@ -1,130 +1,84 @@
-# AI Customer Service Website
+# 3D代打印服務 AI客服
 
-A modern, responsive AI customer service chat interface built with HTML, CSS, and JavaScript, powered by the OpenRouter API.
+一個現代化、響應式的AI驅動客服聊天界面，專門為3D打印服務業務設計。
 
-## Features
+## 功能特色
 
-- 🤖 **AI-Powered Chat**: Uses Claude 3.5 Sonnet via OpenRouter API for intelligent responses
-- 💬 **Real-time Chat Interface**: Modern chat UI with typing indicators and smooth animations
-- 📱 **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
-- ⚡ **Quick Actions**: Pre-defined buttons for common customer service queries
-- ⌨️ **Keyboard Shortcuts**: 
-  - `Enter` to send message
-  - `Shift + Enter` for new line
-  - `Ctrl/Cmd + K` to focus input
-  - `Escape` to clear input
-- 🔗 **Smart Formatting**: Automatically converts URLs to clickable links
-- 🎨 **Modern UI**: Beautiful gradient design with smooth animations
+- 🤖 **AI驅動客服**: 智能回應3D打印服務查詢
+- 🖨️ **3D打印服務專注**: 專業的下單、報價、訂單管理知識
+- 🌐 **雙語支持**: 中文和英文語言支持
+- 📱 **響應式設計**: 完美適配桌面、平板和移動設備
+- ⚡ **實時聊天**: 即時回應和打字指示器
+- 🎨 **現代化UI**: 美麗的漸變設計，3D打印主題
+- 🔧 **快速操作**: 預定義按鈕處理常見3D打印服務問題
+- 📊 **演示模式**: 無需API積分即可測試功能
 
-## Files Structure
+## 快速開始
 
-```
-├── index.html          # Main HTML file
-├── styles.css          # CSS styling
-├── script.js           # JavaScript functionality
-└── README.md           # This file
-```
+1. **克隆或下載** 此存儲庫
+2. **打開** `index.html` 在您的網頁瀏覽器中
+3. **開始聊天** 與3D打印服務AI助手！
 
-## Setup Instructions
+## 配置
 
-1. **Download/Clone** all files to your local machine
-2. **Open** `index.html` in your web browser
-3. **Start chatting** with the AI customer service assistant!
+編輯 `config.js` 來自定義：
 
-## API Configuration
+- **API設置**: 配置OpenRouter API以獲得實時AI回應
+- **模型選擇**: 從各種AI模型中選擇
+- **演示模式**: 啟用/禁用演示回應進行測試
+- **錯誤消息**: 自定義錯誤處理
 
-The website is already configured with your OpenRouter API key. The API key is embedded in the `script.js` file:
+## 3D打印服務支持領域
 
-```javascript
-const OPENROUTER_API_KEY = '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';
-```
+AI助手可以協助：
 
-## How to Use
+- **下單和報價**: 訂單流程、價格計算、材料選擇
+- **訂單管理**: 狀態查詢、進度追蹤、物流信息
+- **3D模型優化**: STL文件檢查、模型修復、打印方向建議
+- **材料諮詢**: PLA、PETG、ABS、TPU、PC等材料推薦
+- **技術支持**: 打印參數設置、後處理建議
+- **售後服務**: 質量問題處理、退換貨支持
 
-### Basic Chat
-1. Type your message in the input field at the bottom
-2. Press `Enter` or click the send button (paper plane icon)
-3. The AI will respond with helpful customer service information
+## 快速操作按鈕
 
-### Quick Actions
-Use the quick action buttons at the bottom for common queries:
-- **Order Help**: Get assistance with orders
-- **Returns**: Information about returns and refunds
-- **Technical Support**: Help with technical issues
-- **Business Hours**: Check operating hours
+- 🛒 **下單服務**: 協助完成3D打印訂單
+- 🔍 **訂單查詢**: 追蹤訂單狀態和進度
+- 🧱 **材料選擇**: 推薦最適合的打印材料
+- ✨ **模型優化**: 檢查和優化3D模型
+- 🧮 **價格諮詢**: 了解價格計算方式
+- ⏰ **交貨時間**: 查詢標準和加急服務時間
 
-### Features
-- **Auto-resize textarea**: The input field grows as you type
-- **Typing indicator**: Shows when the AI is responding
-- **Message timestamps**: Each message shows when it was sent
-- **Smooth scrolling**: Chat automatically scrolls to new messages
-- **Error handling**: Graceful handling of network issues
+## API集成
 
-## Customization
+要啟用實時AI回應：
 
-### Changing the AI Model
-In `script.js`, you can change the AI model by modifying this line:
-```javascript
-model: 'anthropic/claude-3.5-sonnet'
-```
+1. 從 [OpenRouter](https://openrouter.ai/) 獲取API密鑰
+2. 在 `config.js` 中更新 `OPENROUTER_API_KEY`
+3. 在 `config.js` 中設置 `DEMO_MODE: false`
 
-Available models include:
-- `anthropic/claude-3.5-sonnet` (current)
-- `openai/gpt-4`
-- `openai/gpt-3.5-turbo`
-- `google/gemini-pro`
+## 瀏覽器兼容性
 
-### Styling
-Modify `styles.css` to customize:
-- Colors and gradients
-- Fonts and typography
-- Layout and spacing
-- Animations and transitions
-
-### AI Behavior
-Edit the system prompt in `script.js` to change how the AI responds:
-```javascript
-content: `You are a helpful AI customer service assistant. Your role is to:...`
-```
-
-## Browser Compatibility
-
-- ✅ Chrome (recommended)
+- ✅ Chrome (推薦)
 - ✅ Firefox
 - ✅ Safari
 - ✅ Edge
-- ✅ Mobile browsers
+- ✅ 移動瀏覽器
 
-## Security Notes
+## 自定義
 
-- The API key is visible in the client-side code (this is normal for frontend-only applications)
-- For production use, consider implementing a backend server to protect your API key
-- The website uses HTTPS-compatible API calls
+### 顏色
+主題使用橙色漸變 (`#ff6b35` 到 `#f7931e`) 代表3D打印。修改 `styles.css` 來更改顏色。
 
-## Troubleshooting
+### 快速操作
+在 `index.html` 中添加或修改快速操作按鈕以匹配您的特定3D打印服務。
 
-### Common Issues
+### AI回應
+在 `script.js` 中自定義演示回應以匹配您的業務需求和專業領域。
 
-1. **AI not responding**: Check your internet connection and API key validity
-2. **Messages not sending**: Ensure the input field is not disabled
-3. **Styling issues**: Clear browser cache and refresh the page
-4. **API errors**: Check the browser console for detailed error messages
+## 支持
 
-### Network Issues
-The website includes offline detection and will notify you if you lose internet connectivity.
+有關此3D打印服務AI客服界面的問題，請查看故障排除指南或聯繫支持。
 
-## Support
+## 許可證
 
-If you encounter any issues:
-1. Check the browser console for error messages
-2. Verify your internet connection
-3. Ensure all files are in the same directory
-4. Try refreshing the page
-
-## License
-
-This project is open source and available for personal and commercial use.
-
----
-
-**Enjoy your AI customer service experience!** 🤖✨
+此項目是開源的，可在MIT許可證下使用。

@@ -10,23 +10,28 @@ const typingIndicator = document.getElementById('typingIndicator');
 const quickActionButtons = document.querySelectorAll('.quick-action-btn');
 const scrollToTopBtn = document.getElementById('scrollToTop');
 const scrollToBottomBtn = document.getElementById('scrollToBottom');
+const humanSupportBtn = document.getElementById('humanSupportBtn');
 
 // Chat state
 let conversationHistory = [
     {
         role: "system",
-        content: `You are a helpful AI customer service assistant. Your role is to:
-- Provide excellent customer service with a friendly, professional tone
-- Help customers with product information, order status, returns, technical issues, and general inquiries
-- Be concise but thorough in your responses
-- Ask clarifying questions when needed
-- Provide accurate information about business hours, policies, and procedures
-- Escalate complex issues appropriately
-- Always be polite and patient
-- Respond in Chinese (中文) when the customer asks in Chinese
-- Be bilingual and helpful in both English and Chinese
+        content: `您是一個專業的3D代打印服務AI客服助手。您的角色是：
+- 提供優質的3D打印服務諮詢，態度友好專業
+- 協助客戶了解下單流程、報價計算和訂單狀態
+- 提供3D模型優化建議和材料選擇指導
+- 解答打印參數設置和技術問題
+- 處理售後服務和投訴問題
+- 提供準確的價格信息和交貨時間
+- 回應簡潔但詳細
+- 需要時提出澄清問題以提供更好協助
+- 提供準確的3D打印服務信息
+- 適當升級複雜問題
+- 始終保持禮貌和耐心
+- 主要使用中文回應，但也能處理英文查詢
+- 雙語支持，中英文都提供協助
 
-Keep responses conversational and helpful. If you don't have specific information about a company's policies, provide general guidance and suggest contacting human support for specific details.`
+保持對話友好實用。專注於3D打印服務的實用解決方案和最佳實踐。`
     }
 ];
 
@@ -70,6 +75,30 @@ function setupEventListeners() {
 
     // Chat messages scroll event
     chatMessages.addEventListener('scroll', handleScroll);
+
+    // Human support button
+    humanSupportBtn.addEventListener('click', handleHumanSupport);
+}
+
+// Handle human support button click
+function handleHumanSupport() {
+    const supportMessage = `您好！我理解您需要人工客服協助。以下是我們的聯繫方式：
+
+📞 **電話支援**: +886 2 1234 5678
+⏰ **服務時間**: 週一至週五 9:00-18:00
+
+📧 **電子郵件**: support@3dprint-service.com
+⏱️ **回覆時間**: 24小時內
+
+💬 **Line客服**: @3dprint-service
+⚡ **即時支援**: 線上即時回覆
+
+請選擇最適合您的聯繫方式，我們的人工客服團隊將很樂意為您提供專業協助！`;
+
+    addMessageToChat('bot', supportMessage);
+
+    // Add a system message to indicate human support was requested
+    addSystemMessage('客戶已點擊人工支援按鈕，建議提供詳細聯繫信息。');
 }
 
 // Auto-resize textarea
@@ -187,34 +216,42 @@ function getDemoResponse(userMessage) {
     const hasChinese = /[\u4e00-\u9fff]/.test(userMessage);
 
     if (hasChinese) {
-        // Chinese responses
-        if (message.includes('订单') || message.includes('帮助') || message.includes('order') || message.includes('help')) {
-            return "我很乐意帮助您处理订单问题！请提供您的订单号，我可以为您查询状态并提供详细信息。";
-        } else if (message.includes('退货') || message.includes('退款') || message.includes('return') || message.includes('refund')) {
-            return "关于退货和退款，您可以通过账户仪表板发起流程或联系我们的退货部门。大多数商品可以在购买后30天内退货。您有订单号吗？";
-        } else if (message.includes('技术') || message.includes('问题') || message.includes('technical') || message.includes('issue')) {
-            return "很抱歉听到您遇到技术问题。让我帮您解决。请描述您遇到的具体问题，这样我就能提供最相关的解决方案。";
-        } else if (message.includes('营业时间') || message.includes('时间') || message.includes('business hours') || message.includes('hours')) {
-            return "我们的客服时间是周一至周五上午9点至下午6点（东部时间），周六上午10点至下午4点。周日和主要节假日休息。有什么我可以帮助您的吗？";
+        // Chinese responses for 3D printing service
+        if (message.includes('下單') || message.includes('order') || message.includes('購買') || message.includes('buy')) {
+            return "歡迎下單我們的3D打印服務！請按以下步驟操作：1）前往我們位於Carousell的商店 2）上傳您的STL文件 2）選擇材料和顏色 3）確認尺寸和數量 ";
+        } else if (message.includes('訂單') || message.includes('order') || message.includes('狀態') || message.includes('status')) {
+            return "我可以幫您查詢訂單狀態。請提供您的訂單號碼，我會為您查看最新的處理進度。通常3D打印訂單需要3-5個工作日完成，複雜模型可能需要更長時間。";
+        } else if (message.includes('價格') || message.includes('price') || message.includes('費用') || message.includes('cost')) {
+            return "我們的價格計算基於：1）模型重量（克）2）材料成本 3）打印時間 4）後處理需求。一般PLA材料約$0.6/ 1克。您想了解具體報價嗎？";
+        } else if (message.includes('材料') || message.includes('material') || message.includes('filament')) {
+            return "我們提供多種材料選擇：PLA（環保易打印）、PETG（強度好）、ABS（耐高溫）、TPU（柔性）、PC（高強度）、金屬填充等。您打算打印什麼用途的物品？我可以推薦最適合的材料。";
+        } else if (message.includes('模型') || message.includes('model') || message.includes('優化') || message.includes('optimize')) {
+            return "我可以幫您檢查和優化3D模型！常見問題包括：1）模型封閉性 2）壁厚是否足夠 3）支撐結構需求 4）打印方向優化。請上傳您的STL文件，我會提供詳細的優化建議。";
+        } else if (message.includes('時間') || message.includes('time') || message.includes('多久') || message.includes('delivery')) {
+            return "標準交貨時間：小件物品（<100g）1-2個工作日，中等物品（100-500g）3-5個工作日，大件物品（>500g）5-7個工作日。";
         } else if (message.includes('你好') || message.includes('hi') || message.includes('hello')) {
-            return "您好！欢迎使用我们的客服。我可以帮助您处理订单、退货、技术支持或一般咨询问题。今天有什么我可以帮助您的吗？";
+            return "您好！歡迎使用我們的3D代打印服務AI客服。我可以協助您下單、查詢訂單、選擇材料、優化模型等。今天有什麼我可以幫助您的嗎？";
         } else {
-            return "感谢您的留言！我在这里帮助处理客服咨询。请提供更多关于您需要帮助的详细信息。我可以帮助处理订单、退货、技术问题和一般问题。";
+            return "抱歉，我現在遇到了技術問題。請稍後重試，或聯絡我們的人工支援團隊尋求協助。請聯絡我們的人工支援團隊尋求協助。";
         }
     } else {
-        // English responses
-        if (message.includes('order') || message.includes('help')) {
-            return "I'd be happy to help with your order! Could you please provide your order number? I can then check the status and provide you with detailed information about your purchase.";
-        } else if (message.includes('return') || message.includes('refund')) {
-            return "For returns and refunds, you can initiate the process through your account dashboard or contact our returns department. Most items can be returned within 30 days of purchase. Do you have your order number handy?";
-        } else if (message.includes('technical') || message.includes('issue')) {
-            return "I'm sorry to hear you're experiencing technical issues. Let me help you troubleshoot. Could you describe the specific problem you're encountering? This will help me provide the most relevant solution.";
-        } else if (message.includes('business hours') || message.includes('hours')) {
-            return "Our customer service hours are Monday through Friday, 9 AM to 6 PM EST, and Saturday 10 AM to 4 PM EST. We're closed on Sundays and major holidays. Is there anything specific I can help you with?";
+        // English responses for 3D printing service
+        if (message.includes('order') || message.includes('purchase') || message.includes('buy')) {
+            return "Welcome to our 3D printing service! To place an order: 1) Upload your STL file 2) Select material and color 3) Confirm dimensions and quantity 4) Fill in shipping details. Do you have your STL file ready? I can guide you through the entire ordering process.";
+        } else if (message.includes('status') || message.includes('tracking')) {
+            return "I can help you check your order status! Please provide your order number and I'll look up the latest processing progress. 3D printing orders typically take 3-5 business days, complex models may take longer.";
+        } else if (message.includes('price') || message.includes('cost') || message.includes('quote')) {
+            return "Our pricing is based on: 1) Model volume (cubic cm) 2) Material cost 3) Print time 4) Post-processing needs. PLA typically costs $0.5-1/cubic cm, PETG $0.8-1.5/cubic cm. Would you like a specific quote?";
+        } else if (message.includes('material') || message.includes('filament')) {
+            return "We offer various materials: PLA (eco-friendly), PETG (strong), ABS (heat-resistant), TPU (flexible), PC (high-strength), metal-filled, etc. What will you be printing? I can recommend the best material.";
+        } else if (message.includes('model') || message.includes('optimize') || message.includes('stl')) {
+            return "I can help check and optimize your 3D model! Common issues include: 1) Model watertightness 2) Wall thickness 3) Support structure needs 4) Print orientation. Please upload your STL file for detailed optimization advice.";
+        } else if (message.includes('time') || message.includes('delivery') || message.includes('duration')) {
+            return "Standard delivery times: Small items (<100g) 1-2 business days, Medium items (100-500g) 3-5 business days, Large items (>500g) 5-7 business days. Express service available for 24-hour completion.";
         } else if (message.includes('hello') || message.includes('hi')) {
-            return "Hello! Welcome to our customer service. I'm here to help you with any questions about orders, returns, technical support, or general inquiries. How can I assist you today?";
+            return "Hello! Welcome to our 3D printing service AI support. I can help with ordering, order tracking, material selection, model optimization, and more. How can I assist you today?";
         } else {
-            return "Thank you for your message! I'm here to help with customer service inquiries. Could you please provide more details about what you need assistance with? I can help with orders, returns, technical issues, and general questions.";
+            return "Thank you for your inquiry! I'm your 3D printing service AI assistant. I can help with ordering, order status, material selection, model optimization, pricing, and more. What do you need help with?";
         }
     }
 }

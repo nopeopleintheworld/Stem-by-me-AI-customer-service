@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Customer Service</title>
+    <title>3D代打印服務 AI客服</title>
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖨️</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -15,12 +15,12 @@
     <div class="container">
         <header class="header">
             <div class="logo">
-                <i class="fas fa-robot"></i>
-                <h1>AI Customer Service (BETA)</h1>
+                <i class="fas fa-print"></i>
+                <h1>3D代打印服務 AI客服</h1>
             </div>
             <div class="status">
                 <span class="status-dot"></span>
-                <span class="status-text">Online</span>
+                <span class="status-text">在線服務</span>
             </div>
         </header>
 
@@ -28,31 +28,32 @@
             <div class="chat-messages" id="chatMessages">
                 <div class="message bot-message">
                     <div class="message-avatar">
-                        <i class="fas fa-robot"></i>
+                        <i class="fas fa-print"></i>
                     </div>
                     <div class="message-content">
                         <div class="message-text">
-                            Hello! I'm your AI customer service assistant. How can I help you today? I can assist with:
+                            您好！歡迎使用我們的3D代打印服務AI客服。我可以協助您：
                             <ul>
-                                <li>Product information and support</li>
-                                <li>Order status and tracking</li>
-                                <li>Returns and refunds</li>
-                                <li>Technical issues</li>
-                                <li>General inquiries</li>
+                                <li>📋 下單和報價諮詢</li>
+                                <li>📦 訂單狀態查詢</li>
+                                <li>🎨 3D模型優化建議</li>
+                                <li>🧱 材料選擇和建議</li>
+                                <li>⚙️ 打印參數設置</li>
+                                <li>📞 售後服務支持</li>
                             </ul>
-                            Feel free to ask me anything!
+                            請告訴我您需要什麼幫助！
                         </div>
-                        <div class="message-time">Just now</div>
+                        <div class="message-time">剛剛</div>
                     </div>
                 </div>
             </div>
 
             <!-- 滚动控制按钮 -->
             <div class="scroll-controls">
-                <button id="scrollToTop" class="scroll-btn" title="滚动到顶部">
+                <button id="scrollToTop" class="scroll-btn" title="滾動到頂部">
                     <i class="fas fa-chevron-up"></i>
                 </button>
-                <button id="scrollToBottom" class="scroll-btn" title="滚动到底部">
+                <button id="scrollToBottom" class="scroll-btn" title="滾動到底部">
                     <i class="fas fa-chevron-down"></i>
                 </button>
             </div>
@@ -60,8 +61,7 @@
 
         <div class="chat-input-container">
             <div class="input-wrapper">
-                <textarea id="messageInput" placeholder="Type your message here..." rows="1"
-                    maxlength="1000"></textarea>
+                <textarea id="messageInput" placeholder="詢問3D打印服務、下單、報價或訂單狀態..." rows="1" maxlength="1000"></textarea>
                 <button id="sendButton" class="send-button">
                     <i class="fas fa-paper-plane"></i>
                 </button>
@@ -72,27 +72,75 @@
                     <span></span>
                     <span></span>
                 </div>
-                <span>AI is typing...</span>
+                <span>AI正在回覆...</span>
             </div>
         </div>
 
         <div class="quick-actions">
-            <button class="quick-action-btn" data-message="I need help with my order">
+            <button class="quick-action-btn" data-message="我想下單3D打印服務，如何操作？">
                 <i class="fas fa-shopping-cart"></i>
-                Order Help
+                下單服務
             </button>
-            <button class="quick-action-btn" data-message="I want to return a product">
-                <i class="fas fa-undo"></i>
-                Returns
+            <button class="quick-action-btn" data-message="請幫我查詢訂單狀態">
+                <i class="fas fa-search"></i>
+                訂單查詢
             </button>
-            <button class="quick-action-btn" data-message="I have a technical issue">
-                <i class="fas fa-tools"></i>
-                Technical Support
+            <button class="quick-action-btn" data-message="你們提供哪些3D打印材料？">
+                <i class="fas fa-cube"></i>
+                材料選擇
             </button>
-            <button class="quick-action-btn" data-message="What are your business hours?">
+            <button class="quick-action-btn" data-message="我的3D模型需要優化嗎？">
+                <i class="fas fa-magic"></i>
+                模型優化
+            </button>
+            <button class="quick-action-btn" data-message="打印價格如何計算？">
+                <i class="fas fa-calculator"></i>
+                價格諮詢
+            </button>
+            <button class="quick-action-btn" data-message="打印時間需要多久？">
                 <i class="fas fa-clock"></i>
-                Business Hours
+                交貨時間
             </button>
+        </div>
+
+        <!-- 人工支援團隊區域 -->
+        <div class="human-support-section">
+            <div class="support-header">
+                <i class="fas fa-headset"></i>
+                <h3>人工支援團隊</h3>
+            </div>
+            <div class="support-content">
+                <div class="support-info">
+                    <div class="support-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>電話支援</strong>
+                            <p>+886 2 1234 5678</p>
+                            <small>週一至週五 9:00-18:00</small>
+                        </div>
+                    </div>
+                    <div class="support-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>電子郵件</strong>
+                            <p>support@3dprint-service.com</p>
+                            <small>24小時內回覆</small>
+                        </div>
+                    </div>
+                    <div class="support-item">
+                        <i class="fab fa-line"></i>
+                        <div>
+                            <strong>Carousell客服</strong>
+                            <a href="https://www.carousell.com.hk/p/3d-printer%E4%BB%A3%E6%89%93%E6%9C%8D%E5%8B%99-1386705285/?t-id=38342013_1756023345318&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=5ywUX7N2fb6JVqHg&t-tap_index=0" target="_blank">@lcm10</a>
+                            <small>即時線上支援</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- <button class="human-support-btn" id="humanSupportBtn">
+                    <i class="fas fa-user-friends"></i>
+                    聯繫人工客服
+                </button> -->
+            </div>
         </div>
     </div>
 

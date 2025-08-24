@@ -1,7 +1,7 @@
-// Configuration file for AI Customer Service
+// Configuration file for 3D代打印服務 AI客服
 const CONFIG = {
     // OpenRouter API Configuration
-    OPENROUTER_API_KEY: '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',
+    OPENROUTER_API_KEY: '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',
     OPENROUTER_URL: 'https://openrouter.ai/api/v1/chat/completions',
 
     // AI Model Configuration
@@ -19,15 +19,15 @@ const CONFIG = {
     // MODEL: 'openai/gpt-4', // Most expensive but highest quality
 
     // Demo mode (set to true to test without API calls)
-    DEMO_MODE: true, // Enable demo mode since free models need credits
+    DEMO_MODE: true, // Disabled demo mode to enable real AI responses
 
     // Error messages
     ERROR_MESSAGES: {
-        NO_CREDITS: 'Your OpenRouter account needs credits. Please add credits to continue using the AI service.',
-        INVALID_KEY: 'Invalid API key. Please check your OpenRouter API key.',
-        RATE_LIMIT: 'Rate limit exceeded. Please wait a moment and try again.',
-        NETWORK_ERROR: 'Network error. Please check your internet connection.',
-        GENERAL_ERROR: 'An error occurred. Please try again.'
+        NO_CREDITS: '您的OpenRouter帳戶需要充值。請添加積分以繼續使用3D代打印服務AI客服。',
+        INVALID_KEY: 'API密鑰無效。請檢查您的OpenRouter API密鑰。',
+        RATE_LIMIT: '請求頻率過高。請稍等片刻後再試。',
+        NETWORK_ERROR: '網絡錯誤。請檢查您的網絡連接。',
+        GENERAL_ERROR: '發生錯誤。請再試一次。'
     }
 };
 
